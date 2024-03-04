@@ -1,0 +1,44 @@
+<h2>{{#str}} my_quiz_archives, block_archiver{{/str}}</h2>
+<div class="quiz_archiver_overview_description">{{#str}} my_quiz_archives_desc, block_archiver{{/str}}</div>
+{{#.}}
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+  <label class="form-check-label" for="flexCheckDefault">
+    {{name}}
+  </label>
+</div>
+{{/.}}
+
+<button class="btn btn-primary quiz_archiver_overview_start_archiving">{{#str}} start_archiving , block_archiver {{/str}}</button>
+
+<hr>
+
+<h3>{{#str}} my_quiz_archive_jobs, block_archiver{{/str}}</h3>
+
+{{#jobOverviewTable}}
+<h1>
+    {{#str}} job_overview, quiz_archiver {{/str}}
+    <a href="{{{baseurl}}}" class="small mx-2" title="{{#str}} refresh, moodle {{/str}}">
+        <i class="fa fa-rotate-right"></i>
+    </a>
+</h1>
+<div>
+    {{{jobOverviewTable}}}
+</div>
+
+{{#js}}
+    require(['jquery', 'core/modal_factory', 'core/templates'], function($, ModalFactory, Templates) {
+        {{#jobs}}
+            $('#job-details-{{jobid}}').click(async() => {
+                var modal = await ModalFactory.create({
+                    type: ModalFactory.types.DEFAULT,
+                    title: '{{#str}} quiz_archive_details, quiz_archiver {{/str}}',
+                    body: Templates.render('quiz_archiver/job_details', JSON.parse('{{{json}}}')),
+                    large: true,
+                });
+                modal.show();
+            });
+        {{/jobs}}
+    });
+{{/js}}
+{{/jobOverviewTable}}
