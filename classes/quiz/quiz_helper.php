@@ -55,6 +55,7 @@ class quiz_helper extends \plugin_renderer_base {
                 $quizwithattempts[] = $quiz;
             }
         }
+        // print_r($quizwithattempts);die;
         return $quizwithattempts;
     }
 

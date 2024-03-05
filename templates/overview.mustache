@@ -1,15 +1,17 @@
 <h2>{{#str}} my_quiz_archives, block_archiver{{/str}}</h2>
 <div class="quiz_archiver_overview_description">{{#str}} my_quiz_archives_desc, block_archiver{{/str}}</div>
-{{#.}}
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-  <label class="form-check-label" for="flexCheckDefault">
-    {{name}}
-  </label>
-</div>
-{{/.}}
 
-<button class="btn btn-primary quiz_archiver_overview_start_archiving">{{#str}} start_archiving , block_archiver {{/str}}</button>
+<form method="post" action="">
+{{#quizze}}
+<div class="form-check">
+    <label class="form-check-inline fitem">
+        <input type="checkbox" name="quizinstance[]" class="form-check-input "  value="{{instance}}" id="quiz_instance_{{instance}}" >
+        {{name}}
+    </label>
+</div>
+{{/quizze}}
+<button type="submit" name="action" value="selectedquizzes" class="btn btn-primary quiz_archiver_overview_start_archiving">{{#str}} start_archiving , block_archiver {{/str}}</button>
+</form>
 
 <hr>
 

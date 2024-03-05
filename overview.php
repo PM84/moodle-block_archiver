@@ -21,6 +21,7 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 require_once(dirname(dirname(dirname(__FILE__))) . '/config.php');
+require_once($CFG->dirroot . '/mod/quiz/report/archiver/report.php');
 
 use \block_archiver\quiz\quiz_helper;
 use \quiz_archiver\output\job_overview_table;
@@ -37,7 +38,32 @@ $course = $DB->get_record('course', ['id' => $courseid], '*', MUST_EXIST);
 $courseurl = new moodle_url('/course/view.php', ['id' => $courseid]);
 
 require_login($courseid, false);
-$coursecontext = context_course::instance($courseid);
+$coursecontext = \context_course::instance($courseid);
+
+$postaction = optional_param('action', '', PARAM_ALPHANUMEXT);
+if ($postaction == 'selectedquizzes') {
+    $quizinstances = required_param('quizinstance', PARAM_RAW);
+
+    foreach($quizinstances as $quizid) {
+        $quiz = $DB->get_record('quiz', ['id' => $quizid]);
+        $cm = $DB->get_record('course_modules', ['instance' => $quizid, 'module' => 83]);
+
+        $archiverreport = new quiz_archiver_report();
+        $sections = [
+            'header' => 1,
+            'quiz_feedback' => 1,
+            'question' => 1,
+            'question_feedback' => 1,
+            'general_feedback' => 1,
+            'rightanswer' => 1,
+            'history' => 1,
+            'attachments' => 1
+        ];
+        $archiverreport->initiate_users_archive_job($quiz,$cm, $course, $coursecontext, true, $sections, false, "A4", false, false, 'quiz-archive-${courseshortname}-${courseid}-${quizname}-${quizid}_${date}-${time}', 'attempt-${attemptid}-${username}_${date}-${time}',null, $USER->id);
+    }
+
+}
+
 
 $PAGE->set_context($coursecontext);
 $pagetitle = get_string('my_quiz_archives', 'block_archiver');
@@ -46,16 +72,15 @@ $PAGE->set_heading($pagetitle);
 
 echo $OUTPUT->header();
 
-$data = quiz_helper::get_all_quizzes_with_attempt($courseid);
+$data['quizze'] = quiz_helper::get_all_quizzes_with_attempt($courseid);
 
-$jobtbl = new job_overview_table('job_overview_table', $courseid, 7371, 10);
+$jobtbl = new job_overview_table('job_overview_table', $courseid, 1040, 60, $USER->id);
 $jobtbl->define_baseurl($thisurl);
 ob_start();
 $jobtbl->out(10, true);
 $jobtbl_html = ob_get_contents();
 ob_end_clean();
 $data['jobOverviewTable'] = $jobtbl_html;
-
 
 
 echo $OUTPUT->render_from_template('block_archiver/overview', $data);
