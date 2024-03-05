@@ -42,7 +42,7 @@ $coursecontext = \context_course::instance($courseid);
 
 $postaction = optional_param('action', '', PARAM_ALPHANUMEXT);
 if ($postaction == 'selectedquizzes') {
-    $quizinstances = required_param('quizinstance', PARAM_RAW);
+    $quizinstances = $_POST['quizinstance'];
 
     foreach ($quizinstances as $quizid) {
         $quiz = $DB->get_record('quiz', ['id' => $quizid]);
