@@ -44,9 +44,10 @@ $postaction = optional_param('action', '', PARAM_ALPHANUMEXT);
 if ($postaction == 'selectedquizzes') {
     $quizinstances = required_param('quizinstance', PARAM_RAW);
 
-    foreach($quizinstances as $quizid) {
+    foreach ($quizinstances as $quizid) {
         $quiz = $DB->get_record('quiz', ['id' => $quizid]);
-        $cm = $DB->get_record('course_modules', ['instance' => $quizid, 'module' => 83]);
+        $quizmodule = $DB->get_record('modules', ['name' => 'quiz']);
+        $cm = $DB->get_record('course_modules', ['instance' => $quizid, 'module' => $quizmodule->id]);
 
         $archiverreport = new quiz_archiver_report();
         $sections = [
@@ -59,9 +60,23 @@ if ($postaction == 'selectedquizzes') {
             'history' => 1,
             'attachments' => 1
         ];
-        $archiverreport->initiate_users_archive_job($quiz,$cm, $course, $coursecontext, true, $sections, false, "A4", false, false, 'quiz-archive-${courseshortname}-${courseid}-${quizname}-${quizid}_${date}-${time}', 'attempt-${attemptid}-${username}_${date}-${time}',null, $USER->id);
+        $archiverreport->initiate_users_archive_job(
+            $quiz,
+            $cm,
+            $course,
+            $coursecontext,
+            true,
+            $sections,
+            false,
+            get_config('quiz_archiver', 'job_preset_export_attempts_paper_format'),
+            false,
+            false,
+            get_config('quiz_archiver', 'job_preset_archive_filename_pattern'),
+            get_config('quiz_archiver', 'job_preset_export_attempts_filename_pattern'),
+            null,
+            $USER->id
+        );
     }
-
 }
 
 
