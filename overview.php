@@ -89,12 +89,15 @@ echo $OUTPUT->header();
 
 $data['quizze'] = quiz_helper::get_all_quizzes_with_attempt($courseid);
 
-$jobtbl = new job_overview_table('job_overview_table', $courseid, 1040, 60, $USER->id);
-$jobtbl->define_baseurl($thisurl);
-ob_start();
-$jobtbl->out(10, true);
-$jobtbl_html = ob_get_contents();
-ob_end_clean();
+$jobtbl_html = "";
+foreach ($data['quizze'] as $quizwithattempt) {
+    $jobtbl = new job_overview_table('job_overview_table', $courseid, $quizwithattempt->id, $quizwithattempt->instance, $USER->id);
+    $jobtbl->define_baseurl($thisurl);
+    ob_start();
+    $jobtbl->out(10, true);
+    $jobtbl_html .= "<hr><h3>Test: ". $quizwithattempt->name."</h3>" . ob_get_contents();
+    ob_end_clean();
+}
 $data['jobOverviewTable'] = $jobtbl_html;
 
 
