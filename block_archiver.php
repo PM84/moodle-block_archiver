@@ -22,7 +22,6 @@
  * @author     Dr. Peter Mayer
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
 class block_archiver extends block_base {
 
     /**
@@ -51,7 +50,7 @@ class block_archiver extends block_base {
 
         // Add logic here to define your template data or any other content.
         $data = [];
-        $data['url'] =  new \moodle_url('/blocks/archiver/overview.php', ['courseid' => required_param('id', PARAM_INT)]);
+        $data['url'] = new \moodle_url('/blocks/archiver/create_jobcollection.php', ['courseid' => required_param('id', PARAM_INT)]);
 
         $this->content->text = $OUTPUT->render_from_template('block_archiver/content', $data);
 
@@ -69,7 +68,7 @@ class block_archiver extends block_base {
             'site-index' => false,
             'course-view' => true,
             'mod' => false,
-            'my' => true,
         ];
     }
+
 }

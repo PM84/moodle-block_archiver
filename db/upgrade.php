@@ -27,13 +27,65 @@ defined('MOODLE_INTERNAL') || die();
 
 /**
  * Upgrade the badges block
+ *
  * @param int $oldversion
  * @param object $block
  */
 function xmldb_block_archiver_upgrade($oldversion, $block) {
-    global $CFG, $DB;
+    global $DB;
 
     $dbman = $DB->get_manager();
+
+    if ($oldversion < 2024022715) {
+
+        // Define table block_archiver_jobcollection to be created.
+        $table = new xmldb_table('block_archiver_jobcollection');
+
+        // Adding fields to table block_archiver_jobcollection.
+        $table->add_field('id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, XMLDB_SEQUENCE, null);
+        $table->add_field('status', XMLDB_TYPE_CHAR, '32', null, XMLDB_NOTNULL, null, null);
+        $table->add_field('userid', XMLDB_TYPE_INTEGER, '10', null, null, null, null);
+        $table->add_field('courseid', XMLDB_TYPE_INTEGER, '10', null, null, null, null);
+        $table->add_field('timecreated', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, null, null);
+        $table->add_field('timemodified', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, null, null);
+        $table->add_field('timelastrun', XMLDB_TYPE_INTEGER, '10', null, null, null, null);
+
+        // Adding keys to table block_archiver_jobcollection.
+        $table->add_key('primary', XMLDB_KEY_PRIMARY, array('id'));
+
+        // Adding indexes to table block_archiver_jobcollection.
+        $table->add_index('userid', XMLDB_INDEX_NOTUNIQUE, array('userid'));
+        $table->add_index('courseid', XMLDB_INDEX_NOTUNIQUE, array('courseid'));
+
+        // Conditionally launch create table for block_archiver_jobcollection.
+        if (!$dbman->table_exists($table)) {
+            $dbman->create_table($table);
+        }
+
+        // Define table block_archiver_jobcollection_jobs to be created.
+        $table = new xmldb_table('block_archiver_jobcollection_jobs');
+
+        // Adding fields to table block_archiver_jobcollection_jobs.
+        $table->add_field('id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, XMLDB_SEQUENCE, null);
+        $table->add_field('jobcollectionid', XMLDB_TYPE_INTEGER, '10', null, null, null, null);
+        $table->add_field('jobid', XMLDB_TYPE_INTEGER, '10', null, null, null, null);
+        $table->add_field('timecreated', XMLDB_TYPE_INTEGER, '10', null, null, null, null);
+
+        // Adding keys to table block_archiver_jobcollection_jobs.
+        $table->add_key('primary', XMLDB_KEY_PRIMARY, array('id'));
+
+        // Adding indexes to table block_archiver_jobcollection_jobs.
+        $table->add_index('jobcollectionid', XMLDB_INDEX_NOTUNIQUE, array('jobcollectionid'));
+        $table->add_index('jobid', XMLDB_INDEX_NOTUNIQUE, array('jobid'));
+
+        // Conditionally launch create table for block_archiver_jobcollection_jobs.
+        if (!$dbman->table_exists($table)) {
+            $dbman->create_table($table);
+        }
+
+        // Archiver savepoint reached.
+        upgrade_block_savepoint(true, 2024022715, 'archiver');
+    }
 
     return true;
 }

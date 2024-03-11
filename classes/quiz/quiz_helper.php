@@ -55,12 +55,12 @@ class quiz_helper extends \plugin_renderer_base {
                 $quizwithattempts[] = $quiz;
             }
         }
-        // print_r($quizwithattempts);die;
         return $quizwithattempts;
     }
 
     /**
      * Get all quiz attempts of a user of a single quiz.
+     *
      * @param int $quizid
      * @param int $userid
      * @return array

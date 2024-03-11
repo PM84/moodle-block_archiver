@@ -15,16 +15,37 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * German language file
+ * German language file.
  *
  * @package    block_archiver
- * @copyright  2024, ISB Bayern
- * @author     Dr. Peter Mayer
+ * @author     2024 Dr. Peter Mayer, Andreas Wagner
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'Archivierung';
+defined('MOODLE_INTERNAL') || die();
+
+$string['approvalstatus'] = 'Genehmigungsstatus';
+$string['archiver:addinstance'] = 'Füge den Block Archivierung hinzu';
+$string['archiver:createjobcollection'] = 'Erzeuge einen Sammelarchivierungsauftrag';
+$string['deletedjobs'] = 'Gelöschte Einzelaufträge';
+$string['jobcollectioncreated'] = 'Der Sammelarchivierungsauftrag wurde erzeugt.';
+$string['jobcollectiondeleted'] = 'Der Sammelarchivierungsauftrag wurde gelöscht.';
+$string['jobcollectiondeletefailed'] = 'Löschung des Sammelarchivierungsauftrags ist fehlgeschlagen.';
+$string['job_status_UNKNOWN'] = 'Unbekannt';
+$string['job_status_UNINITIALIZED'] = 'Nicht initialisiert';
+$string['job_status_AWAITING_PROCESSING'] = 'Wartend';
+$string['job_status_RUNNING'] = 'Läuft';
+$string['job_status_FINISHED'] = 'Fertig';
+$string['job_status_FAILED'] = 'Fehler';
+$string['job_status_TIMEOUT'] = 'Zeitüberschreitung';
+$string['job_status_DELETED'] = 'Gelöscht';
+$string['my_quiz_archive_jobs'] = 'Meine Archivierungsaufträge';
 $string['my_quiz_archives'] = 'Meine Quiz Archive';
 $string['my_quiz_archives_desc'] = 'Nachfolgend finden Sie alle Quizze, in denen Sie einen Versuch gestartet haben.<br>Wählen Sie die Quizze aus, die gesichert werden sollen?';
+$string['pluginname'] = 'Archivierung';
+$string['requiredquizselection'] = 'Sie müssen mindestens ein Quiz auswählen';
 $string['start_archiving'] = 'Archivierung starten';
-$string['my_quiz_archive_jobs'] = 'Meine Archivierungsaufträge';
+$string['status'] = 'Status';
+$string['statusjobs'] = 'Status der Einzelaufträge';
+$string['timecreated'] = 'Erstellt am';
+$string['quizname'] = 'Quiz';

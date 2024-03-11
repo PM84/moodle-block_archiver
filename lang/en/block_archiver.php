@@ -15,16 +15,40 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * English language file
+ * English language file.
  *
  * @package    block_archiver
- * @copyright  2024, ISB Bayern
- * @author     Dr. Peter Mayer
+ * @author     2024 Dr. Peter Mayer, Andreas Wagner
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'Archiver';
+defined('MOODLE_INTERNAL') || die();
+
+$string['approvalstatus'] = 'Approvalstatus';
+$string['archiver:addinstance'] = 'Add a new archiver block';
+$string['archiver:createjobcollection'] = 'Create a new job collection';
+$string['deletedjobs'] = 'Deleted jobs';
+$string['jobcollectioncreated'] = 'The archive jobs are scheduled';
+$string['jobcollectiondeleted'] = 'The archive jobs are deleted';
+$string['jobcollectiondeletefailed'] = 'Deletion of archive jobs has failed.';
+$string['job_status_UNKNOWN'] = 'Unknown';
+$string['job_status_UNINITIALIZED'] = 'Uninitialized';
+$string['job_status_AWAITING_PROCESSING'] = 'Queued';
+$string['job_status_RUNNING'] = 'Running';
+$string['job_status_FINISHED'] = 'Finished';
+$string['job_status_FAILED'] = 'Failed';
+$string['job_status_TIMEOUT'] = 'Timeout';
+$string['job_status_DELETED'] = 'Deleted';
+$string['job_status_EXCEPTION'] = 'Exception occurred';
+$string['my_quiz_archive_jobs'] = 'My archive jobs';
 $string['my_quiz_archives'] = 'My Quiz Archives';
 $string['my_quiz_archives_desc'] = 'Below you will find all quizzes in which you have started an attempt.<br>Select the quizzes you want to save?';
+$string['pluginname'] = 'Archiver';
+$string['requiredquizselection'] = 'Select at least one quiz';
 $string['start_archiving'] = 'Start archiving';
-$string['my_quiz_archive_jobs'] = 'My archive jobs';
+$string['status'] = 'Status';
+$string['statusjobs'] = 'Status of included jobs';
+$string['timecreated'] = 'Created';
+$string['quizname'] = 'Quiz';
+
+

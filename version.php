@@ -21,11 +21,15 @@
  * @copyright  2024, ISB Bayern
  * @author     Dr. Peter Mayer
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @author     Yuliya Bozhko <yuliya.bozhko@totaralms.com>
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2024022701;        // The current plugin version (Date: YYYYMMDDXX).
+$plugin->version   = 2024031300;        // The current plugin version (Date: YYYYMMDDXX).
 $plugin->requires  = 2022042600;        // Requires this Totara version.
 $plugin->component = 'block_archiver';
+$plugin->dependencies = [
+    'quiz_archiver' => 2024021902,
+    'local_activityapproval' => 2024012200,
+    'assignfeedback_editpdf' => 2022042600
+];

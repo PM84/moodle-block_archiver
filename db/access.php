@@ -22,16 +22,24 @@
  * @author     Dr. Peter Mayer
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+defined('MOODLE_INTERNAL') || die();
 
-$capabilities = array(
-        'block/archiver:addinstance' => array(
-                'captype'      => 'read',
-                'contextlevel' => CONTEXT_BLOCK,
-                'archetypes' => array(
-                    'editingteacher' => CAP_ALLOW,
-                    'manager' => CAP_ALLOW,
-                    'tenantdomainmanager' => CAP_ALLOW,
-                ),
-                'clonepermissionsfrom' => 'moodle/site:manageblocks'
+$capabilities = [
+    'block/archiver:addinstance' => [
+        'captype' => 'read',
+        'contextlevel' => CONTEXT_BLOCK,
+        'archetypes' => array(
+            'editingteacher' => CAP_ALLOW,
+            'manager' => CAP_ALLOW,
+            'tenantdomainmanager' => CAP_ALLOW,
         ),
-);
+        'clonepermissionsfrom' => 'moodle/site:manageblocks'
+    ],
+    'block/archiver:createjobcollection' => [
+        'captype' => 'create',
+        'contextlevel' => CONTEXT_COURSE,
+        'archetypes' => array(
+            'student' => CAP_ALLOW
+        ),
+    ],
+];

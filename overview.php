@@ -37,12 +37,20 @@ $PAGE->set_pagelayout('incourse');
 $course = $DB->get_record('course', ['id' => $courseid], '*', MUST_EXIST);
 $courseurl = new moodle_url('/course/view.php', ['id' => $courseid]);
 
-require_login($courseid, false);
 $coursecontext = \context_course::instance($courseid);
+// Check capability.
+require_capability('block/archiver:createjobcollection', $coursecontext);
 
 $postaction = optional_param('action', '', PARAM_ALPHANUMEXT);
-if ($postaction == 'selectedquizzes') {
-    $quizinstances = $_POST['quizinstance'];
+if (data_submitted() && ($postaction == 'selectedquizzes') && confirm_sesskey()) {
+
+    $quizinstances = optional_param_array('quizinstance', [], PARAM_INT);
+
+    print_r($quizinstances); die;
+
+    if (!$quizinstances) {
+        redirect($thisurl, get_string('requiredquizselection', 'block_archiver'));
+    }
 
     foreach ($quizinstances as $quizid) {
         $quiz = $DB->get_record('quiz', ['id' => $quizid]);
@@ -99,7 +107,7 @@ foreach ($data['quizze'] as $quizwithattempt) {
     ob_end_clean();
 }
 $data['jobOverviewTable'] = $jobtbl_html;
-
+$data['sesskey'] = sesskey();
 
 echo $OUTPUT->render_from_template('block_archiver/overview', $data);
 
