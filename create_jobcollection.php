@@ -45,7 +45,7 @@ require_capability('block/archiver:createjobcollection', $coursecontext);
 
 $postaction = optional_param('action', '', PARAM_ALPHANUMEXT);
 if (data_submitted() && ($postaction == 'selectedquizzes') && confirm_sesskey()) {
-    $quizids = optional_param_array('attemptid', [], PARAM_INT);
+    $quizids = optional_param_array('quizid', [], PARAM_INT);
     if ($quizids) {
         $jobcollection = new jobcollection(['userid' => $USER->id, 'courseid' => $courseid]);
         $jobcollection->create_latest_attempt_collection($course, $coursecontext, $quizids);

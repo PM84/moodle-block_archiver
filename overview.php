@@ -45,9 +45,6 @@ $postaction = optional_param('action', '', PARAM_ALPHANUMEXT);
 if (data_submitted() && ($postaction == 'selectedquizzes') && confirm_sesskey()) {
 
     $quizinstances = optional_param_array('quizinstance', [], PARAM_INT);
-
-    print_r($quizinstances); die;
-
     if (!$quizinstances) {
         redirect($thisurl, get_string('requiredquizselection', 'block_archiver'));
     }

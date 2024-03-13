@@ -43,6 +43,7 @@ $string['job_status_EXCEPTION'] = 'Exception occurred';
 $string['my_quiz_archive_jobs'] = 'My archive jobs';
 $string['my_quiz_archives'] = 'My Quiz Archives';
 $string['my_quiz_archives_desc'] = 'Below you will find all quizzes in which you have started an attempt.<br>Select the quizzes you want to save?';
+$string['norecentapproval'] = 'No approval';
 $string['pluginname'] = 'Archiver';
 $string['requiredquizselection'] = 'Select at least one quiz';
 $string['start_archiving'] = 'Start archiving';

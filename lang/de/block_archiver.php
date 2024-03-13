@@ -42,6 +42,7 @@ $string['job_status_DELETED'] = 'Gelöscht';
 $string['my_quiz_archive_jobs'] = 'Meine Archivierungsaufträge';
 $string['my_quiz_archives'] = 'Meine Quiz Archive';
 $string['my_quiz_archives_desc'] = 'Nachfolgend finden Sie alle Quizze, in denen Sie einen Versuch gestartet haben.<br>Wählen Sie die Quizze aus, die gesichert werden sollen?';
+$string['norecentapproval'] = 'Kein genehmigter Versuch';
 $string['pluginname'] = 'Archivierung';
 $string['requiredquizselection'] = 'Sie müssen mindestens ein Quiz auswählen';
 $string['start_archiving'] = 'Archivierung starten';

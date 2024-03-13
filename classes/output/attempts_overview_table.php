@@ -80,7 +80,9 @@ class attempts_overview_table extends \table_sql {
 
         $where = "actapp.approval_expected = 1
                   AND cm.course = :courseid
-                  AND q.id IN (SELECT quiz FROM {quiz_attempts} qa WHERE qa.quiz = q.id AND qa.userid = :userid2)";
+                  AND q.id IN (SELECT quiz
+                                 FROM {quiz_attempts} qa
+                                WHERE qa.quiz = q.id AND qa.userid = :userid2 AND qa.preview = 0)";
 
         $params = [
             'courseid' => $courseid,
@@ -104,7 +106,7 @@ class attempts_overview_table extends \table_sql {
      * @return string HTML code to be displayed
      */
     public function col_checkbox($values) {
-        return \html_writer::empty_tag('input', ['type' => 'checkbox', 'name' => 'attemptid[]', 'value' => $values->quizid]);
+        return \html_writer::empty_tag('input', ['type' => 'checkbox', 'name' => 'quizid[]', 'value' => $values->quizid]);
     }
 
     /**
@@ -143,6 +145,9 @@ class attempts_overview_table extends \table_sql {
      * @return string HTML code to be displayed
      */
     public function col_status($values) {
+        if (!isset($values->status)) {
+            return get_string('norecentapproval', 'block_archiver');
+        }
         return $this->render_approval_status($values->status);
     }
 }
