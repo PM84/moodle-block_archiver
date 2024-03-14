@@ -106,8 +106,9 @@ class jobcollection_overview_table extends \table_sql {
      */
     public function col_status($values) {
         $s = jobcollection::get_status_display_args($values->status);
-        return '<span class="badge badge-' . $s['color'] . '">' . $s['text'] . '</span><br/>' .
-                '<small>' . date('H:i:s', $values->timemodified) . '</small>';
+        return '<span class="badge badge-' . $s['color'] . '">' . $s['text'] . '</span><br/>';
+        // return '<span class="badge badge-' . $s['color'] . '">' . $s['text'] . '</span><br/>' .
+        //         '<small>' . date('H:i:s', $values->timemodified) . '</small>';
     }
 
     /**
@@ -204,7 +205,8 @@ class jobcollection_overview_table extends \table_sql {
             $renderedstatus = '<span class="badge badge-' . $s['color'] . '">' . $s['text'] . '</span>';
 
             if (!empty($jobids)) {
-                $items[] = $renderedstatus . ': Job ' . implode(', Job ', $jobids);
+                $items[] = $renderedstatus;
+                // $items[] = $renderedstatus . ': Job ' . implode(', Job ', $jobids);
             }
         }
 

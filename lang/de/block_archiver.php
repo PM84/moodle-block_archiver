@@ -41,7 +41,10 @@ $string['job_status_TIMEOUT'] = 'Zeitüberschreitung';
 $string['job_status_DELETED'] = 'Gelöscht';
 $string['my_quiz_archive_jobs'] = 'Meine Archivierungsaufträge';
 $string['my_quiz_archives'] = 'Meine Quiz Archive';
-$string['my_quiz_archives_desc'] = 'Nachfolgend finden Sie alle Quizze, in denen Sie einen Versuch gestartet haben.<br>Wählen Sie die Quizze aus, die gesichert werden sollen?';
+$string['my_quiz_archives_desc'] = '<p>Nachfolgend finden Sie alle Ihre Erarbeitungen des JAPGuides.</p>'
+. '<p>Wählen Sie die Bereiche aus, die Sie sichern wollen.</p>'
+. '<p>Bitte beachten Sie, dass die Sicherung einige Zeit in Anspruch nehmen kann.'
+. ' Die vollständige Sicherung ist abgeschlossen, wenn der Status "Fertig" angezeigt wird.</p>';
 $string['norecentapproval'] = 'Kein genehmigter Versuch';
 $string['pluginname'] = 'Archivierung';
 $string['requiredquizselection'] = 'Sie müssen mindestens ein Quiz auswählen';
@@ -50,3 +53,11 @@ $string['status'] = 'Status';
 $string['statusjobs'] = 'Status der Einzelaufträge';
 $string['timecreated'] = 'Erstellt am';
 $string['quizname'] = 'Quiz';
+
+// KH-Adjustments;
+$string['jobcollectioncreated'] = 'Der JAPGuide Export wird erzeugt.';
+$string['jobcollectiondeleted'] = 'Der JAPGuide Export wurde gelöscht.';
+$string['my_quiz_archive_jobs'] = 'Meine Sicherungsaufträge';
+$string['my_quiz_archives'] = 'Mein JAPGuide Export';
+$string['my_quiz_archives_desc_short'] = 'Hier können Sie Ihre ausgearbeiteten JAPGuide Inhalte sichern.';
+$string['start_archiving'] = 'Sicherung starten';

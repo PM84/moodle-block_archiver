@@ -1,0 +1,12 @@
+<input type="checkbox" id='block_archiver_select_all'>
+
+{{#js}}
+let selectAllCheckbox = document.getElementById('block_archiver_select_all');
+selectAllCheckbox.addEventListener('change', function() {
+    let checkboxes = document.querySelectorAll('input[name="quizid[]"]');
+    checkboxes.forEach(checkbox => {
+        checkbox.checked = selectAllCheckbox.checked;
+    });
+});
+
+{{/js}}

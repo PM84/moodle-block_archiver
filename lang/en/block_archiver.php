@@ -52,4 +52,5 @@ $string['statusjobs'] = 'Status of included jobs';
 $string['timecreated'] = 'Created';
 $string['quizname'] = 'Quiz';
 
-
+// KH-Adjustments
+$string['my_quiz_archives_desc_short'] = 'Here you can save your completed JAPGuide content';

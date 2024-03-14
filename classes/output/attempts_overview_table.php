@@ -54,7 +54,7 @@ class attempts_overview_table extends \table_sql {
      * @throws \coding_exception
      */
     public function __construct(string $uniqueid, int $courseid, int $userid = 0) {
-        global $USER;
+        global $USER, $OUTPUT;
 
         parent::__construct($uniqueid);
 
@@ -65,7 +65,7 @@ class attempts_overview_table extends \table_sql {
         ]);
 
         $this->define_headers([
-            '',
+            $OUTPUT->render_from_template('block_archiver/checkbox_all', []),
             get_string('quizname', 'block_archiver'),
             get_string('approvalstatus', 'block_archiver'),
         ]);
