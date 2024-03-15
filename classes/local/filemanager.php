@@ -37,6 +37,9 @@ use stored_file;
  */
 class filemanager extends \quiz_archiver\FileManager {
 
+    /** @var string foldername of attachments in archive. */
+    const ATTACHMENT_FOLDER = 'attachments';
+
     /**
      * Get the merged pdf filename.
      *
@@ -62,8 +65,8 @@ class filemanager extends \quiz_archiver\FileManager {
                         return false;
                     }
                     if ($current->isDir()) {
-                        // Only recurse into intended subdirectories.
-                        return true;
+                        // Stop recursion on attachment folders level.
+                        return ($current->getFilename() != self::ATTACHMENT_FOLDER);
                     }
                     // Only consume files of interest.
                     return (($extension == '') || (strpos($current->getExtension(), $extension) !== false));
