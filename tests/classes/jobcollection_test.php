@@ -259,6 +259,9 @@ class jobcollection_test extends \advanced_testcase {
         $mockfilesdir3 = $CFG->dirroot .
                 '/blocks/archiver/tests/fixtures/quiz-archive-CID-0000000003-3-Test quiz-11_2024-03-11-09-15-18.tar.gz';
 
+        $startdelay = 100;
+        set_config('startdelay', $startdelay, 'block_archiver');
+
         // Create new archive job.
         $mocks = $this->generateMockQuiz();
         $mocks->attempts = [
@@ -298,7 +301,7 @@ class jobcollection_test extends \advanced_testcase {
         // Execute adhoc task.
         $this->assertEmpty(\core\task\manager::get_next_adhoc_task(time()));
 
-        $task = \core\task\manager::get_next_adhoc_task(time() + adhoc_create_jobcollection::START_DELAY + 1);
+        $task = \core\task\manager::get_next_adhoc_task(time() + $startdelay + 1);
         $this->assertInstanceOf('\\block_archiver\\task\\adhoc_create_jobcollection', $task);
         try {
             $task->execute();
@@ -316,7 +319,7 @@ class jobcollection_test extends \advanced_testcase {
         // Set job3 to finished and run again.
         $job3->set_status(jobcollection::STATUS_FINISHED);
 
-        $task = \core\task\manager::get_next_adhoc_task(time() + adhoc_create_jobcollection::START_DELAY + 61);
+        $task = \core\task\manager::get_next_adhoc_task(time() + $startdelay + 61);
         $this->assertInstanceOf('\\block_archiver\\task\\adhoc_create_jobcollection', $task);
         try {
             $task->execute();

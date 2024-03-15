@@ -71,4 +71,13 @@ class block_archiver extends block_base {
         ];
     }
 
+    /**
+     * Indicate that this block has settings.
+     *
+     * @return boolean
+     */
+    function has_config() {
+        return true;
+    }
+
 }
