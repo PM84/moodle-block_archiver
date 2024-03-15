@@ -15,21 +15,21 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Version details.
+ * Defines the form for editing activity results block instances.
  *
  * @package    block_archiver
- * @copyright  2024, ISB Bayern
- * @author     Dr. Peter Mayer
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @copyright  2024 Andreas Wagner
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
+defined('MOODLE_INTERNAL') || die;
 
-$plugin->version   = 2024031301;        // The current plugin version (Date: YYYYMMDDXX).
-$plugin->requires  = 2022042600;        // Requires this Totara version.
-$plugin->component = 'block_archiver';
-$plugin->dependencies = [
-    'quiz_archiver' => 2024021902,
-    'local_activityapproval' => 2024012200,
-    'assignfeedback_editpdf' => 2022042600
-];
+if ($ADMIN->fulltree) {
+
+    // Default start delay.
+    $setting = new admin_setting_configtext('block_archiver/startdelay',
+        new lang_string('startdelay', 'block_archiver'),
+        new lang_string('startdelaydesc', 'block_archiver'), 100, PARAM_INT);
+
+    $settings->add($setting);
+}

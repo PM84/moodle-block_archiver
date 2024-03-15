@@ -36,8 +36,6 @@ use block_archiver\local\jobcollection;
  */
 class adhoc_create_jobcollection extends \core\task\adhoc_task {
 
-    const START_DELAY = 100;
-
     /**
      * Overridden to set a start delay.
      *
@@ -47,7 +45,8 @@ class adhoc_create_jobcollection extends \core\task\adhoc_task {
         if ($nextruntime = parent::get_next_run_time()) {
             return $nextruntime;
         }
-        return time() + self::START_DELAY;
+        $startdelay = get_config('block_archiver', 'startdelay');
+        return time() + $startdelay;
     }
 
     /**
