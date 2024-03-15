@@ -56,7 +56,7 @@ class jobcollection_overview_table extends \table_sql {
         parent::__construct($uniqueid);
 
         $this->define_columns([
-            'id',
+            // 'id',
             'timecreated',
             'jobs',
             'status',
@@ -64,7 +64,7 @@ class jobcollection_overview_table extends \table_sql {
         ]);
 
         $this->define_headers([
-            'Id',
+            // 'Id',
             get_string('timecreated', 'block_archiver'),
             get_string('statusjobs', 'block_archiver'),
             get_string('status', 'block_archiver'),
@@ -94,7 +94,7 @@ class jobcollection_overview_table extends \table_sql {
      * @return string HTML code to be displayed
      */
     public function col_timecreated($values) {
-        return date('Y-m-d H:i:s', $values->timecreated);
+        return date('d.m.Y H:i', $values->timecreated). " Uhr";
     }
 
     /**
