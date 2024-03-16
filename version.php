@@ -25,7 +25,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2024031301;        // The current plugin version (Date: YYYYMMDDXX).
+$plugin->version   = 2024031600;        // The current plugin version (Date: YYYYMMDDXX).
 $plugin->requires  = 2022042600;        // Requires this Totara version.
 $plugin->component = 'block_archiver';
 $plugin->dependencies = [
