@@ -46,7 +46,7 @@ class filemanager extends \quiz_archiver\FileManager {
      * @return string
      */
     protected function get_pdf_overview_filename(): string {
-        return 'answers-overview.pdf';
+        return 'MEIN_JAPGuide_Export.pdf';
     }
 
     /**
