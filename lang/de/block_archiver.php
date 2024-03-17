@@ -56,7 +56,7 @@ $string['statusjobs'] = 'Status der Einzelaufträge';
 $string['timecreated'] = 'Erstellt am';
 $string['quizname'] = 'Quiz';
 
-// KH-Adjustments;
+// KH-Adjustments.
 $string['jobcollectioncreated'] = 'Der JAPGuide Export wird erzeugt.';
 $string['jobcollectiondeleted'] = 'Der JAPGuide Export wurde gelöscht.';
 $string['my_quiz_archive_jobs'] = 'Meine Sicherungsaufträge';

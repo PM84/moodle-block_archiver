@@ -10,8 +10,8 @@
     <button type="submit" name="action" value="selectedquizzes" class="btn btn-primary quiz_archiver_overview_start_archiving">{{#str}} start_archiving , block_archiver {{/str}}</button>
 </form>
 
-<h3>{{#str}} my_quiz_archive_jobs, block_archiver{{/str}}
-<a href="{{{baseurl}}}" class="small mx-2" title="{{#str}} refresh, moodle {{/str}}">
+<h3 id="#my-archive-jobs">{{#str}} my_quiz_archive_jobs, block_archiver{{/str}}
+    <a href="{{{baseurl}}}#my-archive-jobs" class="small mx-2" title="{{#str}} refresh, moodle {{/str}}" onclick="location.reload()">
         <i class="fa fa-rotate-right"></i>
     </a>
 </h3>

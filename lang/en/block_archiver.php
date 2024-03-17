@@ -54,5 +54,10 @@ $string['statusjobs'] = 'Status of included jobs';
 $string['timecreated'] = 'Created';
 $string['quizname'] = 'Quiz';
 
-// KH-Adjustments
+// KH-Adjustments.
+$string['jobcollectioncreated'] = 'The archive will be created.';
+$string['jobcollectiondeleted'] = 'The archive have been deleted.';
+$string['my_quiz_archive_jobs'] = 'My archive tasks';
+$string['my_quiz_archives'] = 'My arxchive jobs';
 $string['my_quiz_archives_desc_short'] = 'Here you can save your completed JAPGuide content';
+$string['start_archiving'] = 'Start archiving';

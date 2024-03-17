@@ -56,7 +56,6 @@ class jobcollection_overview_table extends \table_sql {
         parent::__construct($uniqueid);
 
         $this->define_columns([
-            // 'id',
             'timecreated',
             'jobs',
             'status',
@@ -64,7 +63,6 @@ class jobcollection_overview_table extends \table_sql {
         ]);
 
         $this->define_headers([
-            // 'Id',
             get_string('timecreated', 'block_archiver'),
             get_string('statusjobs', 'block_archiver'),
             get_string('status', 'block_archiver'),
